@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "517477383525",
+    "firebase_url": "https://zuuapp-d1762.firebaseio.com",
+    "project_id": "zuuapp-d1762",
+    "storage_bucket": "zuuapp-d1762.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517477383525:android:98cd45f45ca0a7c27cb58c",
+        "android_client_info": {
+          "package_name": "com.ecualac.zuuapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517477383525-v0eele00hlu69ohuv5iuogm8sgff322q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ecualac.zuuapp",
+            "certificate_hash": "b452a1ef8fc99fe0310722d8130f9dbd8ec72a79"
+          }
+        },
+        {
+          "client_id": "517477383525-c1bu9tgb5avuvq4o9oe5g9bc9tpuhkh3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqDjRSbPiQHuVIc31G43Rvm72bI6Su3B8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517477383525-c1bu9tgb5avuvq4o9oe5g9bc9tpuhkh3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

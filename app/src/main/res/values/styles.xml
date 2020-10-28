@@ -1,0 +1,66 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.MaterialComponents.Dark</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:navigationBarColor">@color/design_default_color_primary_dark</item>
+        <item name ="android:textColor">@color/common_google_signin_btn_text_dark_pressed</item>
+        <item name ="android:textColorPrimary">@color/common_google_signin_btn_text_dark_pressed</item>
+    </style>
+
+    <style name="Theme.YourApp.Dark" parent="Theme.MaterialComponents.Bridge">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- your dark theme attributes -->
+        <!-- Customize your theme here. -->
+        <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
+
+    </style>
+
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker" >
+        <item name="android:headerBackground">#A1872E</item>
+        <item name="android:background">#0E0B02</item>
+        <item name="android:colorButtonNormal">#0E0B02</item>
+        <item name="android:calendarTextColor">#530057</item>
+        <item name="android:dayOfWeekBackground">@color/colorPrimaryDark</item>
+        <item name="android:yearListSelectorColor">@color/colorAccent</item>
+        <item name="android:datePickerMode">calendar</item>
+        <item name="android:minDate">01/01/2000</item>
+    </style>
+
+    <style name="TimePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.Bridge">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">false</item>
+        <!-- your dark theme attributes -->
+        <!-- Customize your theme here. -->
+        <item name="hintTextColor">#D3B9B9</item>
+    </style>
+
+    <color name="primaryColor">#131111</color>
+    <color name="primaryDarkColor">#2C2626</color>
+    <color name="secondaryColor">#4E4B4B</color>
+</resources>
