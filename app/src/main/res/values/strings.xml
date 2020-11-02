@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">ZuuApp</string>
     <string name="title_activity_sup">SupActivity</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Registro Producto</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_registro">RegistroActivity</string>
     <string name="tab_text_1">Tanqueros</string>
     <string name="tab_text_2">Supervisores</string>
-    <string name="title_activity_tanque">MainActivity</string>
+    <string name="title_activity_tanque">TanqueActivity</string>
+    <string name="Msg_tanque_1">Escanee el codigo de barras del producto:</string>
+    <string name="Msg_tanque_2">ó, seleccione el producto en la siguiente lista:</string>
 </resources>

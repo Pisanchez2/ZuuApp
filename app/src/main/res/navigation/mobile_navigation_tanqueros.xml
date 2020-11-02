@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.ecualac.zuuapp.ui.tanqueros.home.HomeFragment"
+        android:name="com.ecualac.zuuapp.ui.tanqueros.home.Home_Tanqueros_Fragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home_tanqueros" />
 

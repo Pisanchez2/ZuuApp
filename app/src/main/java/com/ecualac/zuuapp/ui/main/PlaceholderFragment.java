@@ -2,6 +2,7 @@ package com.ecualac.zuuapp.ui.main;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.ecualac.zuuapp.AuthActivity;
 import com.ecualac.zuuapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,7 +29,30 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.util.Objects;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -36,10 +61,12 @@ public class PlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     EditText NombresText, ApellidosText, EmailText, ContraText, ConfirmContraText;
-    Button Registrar;
+    Button Registrar, reg2;
     int userlevel;
-    private DatabaseReference reffBuscar ;
+    TextView responseText;
+    private DatabaseReference reffBuscar;
     private PageViewModel pageViewModel;
+    static String postUrl = "http://192.168.100.53";
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -56,7 +83,7 @@ public class PlaceholderFragment extends Fragment {
         int index = 1;
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
-            userlevel= index;
+            userlevel = index;
         }
         pageViewModel.setIndex(index);
     }
@@ -71,9 +98,18 @@ public class PlaceholderFragment extends Fragment {
         ApellidosText = root.findViewById(R.id.ApellRegText);
         EmailText = root.findViewById(R.id.EmailRegText);
         ContraText = root.findViewById(R.id.ContraRegText);
-        ConfirmContraText= root.findViewById(R.id.ConfirmContraText);
+        ConfirmContraText = root.findViewById(R.id.ConfirmContraText);
         Registrar = root.findViewById(R.id.Registrar_btn);
+        responseText = root.findViewById(R.id.responseTextRegister);
+
         reffBuscar = FirebaseDatabase.getInstance().getReference().child("Usuarios");
+        reg2 = root.findViewById(R.id.registerButton);
+        reg2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendPost();
+            }
+        });
 
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -82,6 +118,8 @@ public class PlaceholderFragment extends Fragment {
             }
         });
 
+        /*
+        //FIREBASE
         Registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,8 +151,128 @@ public class PlaceholderFragment extends Fragment {
                         }
                     }
                 });
-
+        */
         return root;
+
+    }
+
+    public void sendPost() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL(postUrl+"/api/usuario");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept","application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    jsonParam.put("user_name", NombresText.getText().toString().trim());
+                    jsonParam.put("email", EmailText.getText().toString().trim());
+                    jsonParam.put("password", ContraText.getText().toString().trim());
+                    jsonParam.put("is_blocked", false);
+
+                    Log.i("JSON", jsonParam.toString());
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
+                    os.writeBytes(jsonParam.toString());
+
+                    os.flush();
+                    os.close();
+
+                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                    Log.i("MSG" , conn.getResponseMessage());
+
+                    conn.disconnect();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
+    }
+
+
+
+    public void register() {
+
+        if (NombresText.length() == 0 || EmailText.length() == 0 || ContraText.length() == 0) {
+            Toast.makeText(getContext(), "Something is wrong. Please check your inputs.", Toast.LENGTH_LONG).show();
+        } else {
+            JSONObject registrationForm = new JSONObject();
+            try {
+                //registrationForm.put("subject", "register");
+                registrationForm.put("user_name", NombresText.getText().toString().trim());
+                registrationForm.put("email", EmailText.getText().toString().trim());
+                registrationForm.put("password", ContraText.getText().toString().trim());
+                registrationForm.put("is_blocked", false);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), registrationForm.toString());
+
+            postRequest(postUrl+"/api/products", body);
+
+            Log.i("URL", "register: "+body );
+            Log.i("URL-JSON", "register: "+ registrationForm );
+
+
+        }
+
+    }
+
+    public void postRequest(String postUrl, RequestBody postBody) {
+        OkHttpClient client = new OkHttpClient();
+
+        final Request request = new Request.Builder()
+                .url(postUrl)
+                .post(postBody)
+                .build();
+
+        Log.i("URL2", "register: "+request);
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                call.cancel();
+                Log.d("FAIL", e.getMessage());
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        responseText.setText("Failed to Connect to Server. Please Try Again.");
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) {
+                try {
+                    final String responseString = response.body().string().trim();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (responseString.equals("success")) {
+                                responseText.setText("Registration completed successfully.");
+                            } else if (responseString.equals("username")) {
+                                responseText.setText("Username already exists. Please chose another username.");
+                            } else {
+                                responseText.setText("Something went wrong. Please try again later.");
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 }
