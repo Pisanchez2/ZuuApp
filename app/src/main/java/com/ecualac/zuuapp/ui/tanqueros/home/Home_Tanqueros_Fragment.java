@@ -36,13 +36,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import okhttp3.*;
 
 public class Home_Tanqueros_Fragment extends Fragment {
+
+    private static final String TAG = "Home Tanqueros";
 
     static class Product{
         String Nombre, Presentacion, codebar ,product_public_id, public_id;
@@ -67,8 +71,6 @@ public class Home_Tanqueros_Fragment extends Fragment {
 
     private final OkHttpClient httpClient = new OkHttpClient();
 
-    private HomeViewModel homeViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -77,44 +79,46 @@ public class Home_Tanqueros_Fragment extends Fragment {
         final ImageButton QRbuscarBtn = root.findViewById(R.id.QRBuscarBtn);
         CodeText = root.findViewById(R.id.CodeText);
         listview = (ListView) root.findViewById(R.id.product_listview);
+
         productos=new ArrayList<>();
-        //se añade el header
-        ViewGroup header = (ViewGroup)inflater.inflate(R.layout.product_list_header,listview,false);
-        listview.addHeaderView(header);
         myAdapter= new MyAdapter_home_tanqueros(getContext(),R.layout.product_list_item,productos);
-        myAdapter.clear();
+        try {
+            myAdapter.updateReceiptsList(productos);
+        }catch (Exception e){
+            Log.e(TAG, "ANT ", e);
+        }
         try {
             sendGET3();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //Se añaden los productos
 
-        // se interactua con el adaptador
-        listview.setAdapter(myAdapter);
-        //myAdapter.notifyDataSetChanged();
+        //se añade el header
+        try {
+            ViewGroup header = (ViewGroup) inflater.inflate(R.layout.product_list_header, listview, false);
+            listview.addHeaderView(header);
+            myAdapter.updateReceiptsList(productos);
+            listview.setAdapter(myAdapter);
+        }catch (Exception e){
+            Log.e(TAG, "DES ",e );
+        }
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "Se ha seleccionado el medidor: "+ productos.get(position-1).Presentacion, Toast.LENGTH_LONG).show();
-                gotoEnviarProducts(productos.get(position-1).Nombre,productos.get(position-1).Presentacion,
-                         String.valueOf(productos.get(position-1).c_disponible)
-                ,productos.get(position-1).public_id);
+        listview.setOnItemClickListener((parent, view, position, id) -> {
+            Toast.makeText(getActivity(), "Se ha seleccionado el medidor: "+ productos.get(position-1).Presentacion, Toast.LENGTH_LONG).show();
+            gotoEnviarProducts(productos.get(position-1).Nombre,productos.get(position-1).Presentacion,
+                     String.valueOf(productos.get(position-1).c_disponible)
+            ,productos.get(position-1).public_id);
 
-            }
         });
 
-        QRbuscarBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                // Funcion para actualizar los campos en el frame de Tomar Mediciones
-                escanear();
-            }
+        QRbuscarBtn.setOnClickListener(view -> {
+            // Funcion para actualizar los campos en el frame de Tomar Mediciones
+            escanear();
         });
 
         return root;
     }
+
 
     private void popList() {
 
@@ -136,7 +140,6 @@ public class Home_Tanqueros_Fragment extends Fragment {
 
                 Product newprod = new Product(product_name, presentacion, c_dispo, code_bar, product_public_id,public_id);
                 productos.add(newprod);
-
             } catch (Exception e) {
                 Log.e("POPLIST", "Error al obtener los datos: ", e);
             }

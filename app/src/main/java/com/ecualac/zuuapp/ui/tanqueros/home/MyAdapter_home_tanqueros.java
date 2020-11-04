@@ -11,11 +11,12 @@ import android.widget.TextView;
 import com.ecualac.zuuapp.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter_home_tanqueros extends BaseAdapter {
     private Context context;
     private int layout;
-    private ArrayList<Home_Tanqueros_Fragment.Product> productos;
+    public ArrayList<Home_Tanqueros_Fragment.Product> productos;
 
     public MyAdapter_home_tanqueros(Context context, int layout, ArrayList<Home_Tanqueros_Fragment.Product> productos){
         this.context=context;
@@ -27,6 +28,12 @@ public class MyAdapter_home_tanqueros extends BaseAdapter {
     {
         productos.clear();
         notifyDataSetChanged();
+    }
+
+    public void updateReceiptsList(List<Home_Tanqueros_Fragment.Product> newproductos) {
+        productos.clear();
+        productos.addAll(newproductos);
+        this.notifyDataSetChanged();
     }
 
     @Override
@@ -66,7 +73,7 @@ public class MyAdapter_home_tanqueros extends BaseAdapter {
         textView1.setText(currentName);
         textView2.setText(currentPresentacion);
         textView3.setText(String.valueOf(currentc_disponible));
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
         //Devolvemos la vista inflada
         return v;
     }

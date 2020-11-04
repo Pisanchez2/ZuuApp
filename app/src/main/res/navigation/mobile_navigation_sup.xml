@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.ecualac.zuuapp.ui.supervisores.home.HomeFragment"
+        android:name="com.ecualac.zuuapp.ui.supervisores.home.HomeFragment_Sup"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home_sup" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.ecualac.zuuapp.ui.supervisores.dashboard.DashboardFragment"
+        android:name="com.ecualac.zuuapp.ui.supervisores.dashboard.DashboardFragment_Sup"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard_sup" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.ecualac.zuuapp.ui.supervisores.notifications.NotificationsFragment"
+        android:name="com.ecualac.zuuapp.ui.supervisores.notifications.NotificationsFragment_Sup"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications_sup" />
 </navigation>

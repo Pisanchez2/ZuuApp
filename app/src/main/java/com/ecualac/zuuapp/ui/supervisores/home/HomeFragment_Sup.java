@@ -29,7 +29,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment_Sup extends Fragment {
     PieChart pieChart;
 
     PieData pieData;

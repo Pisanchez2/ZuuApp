@@ -106,7 +106,7 @@ public class Enviar_Products_Fragment extends Fragment {
 
     public static String getCurrentTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(PubVariable.date_format);
-        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT-5"));
         Date today = Calendar.getInstance().getTime();
         return dateFormat.format(today);
     }
