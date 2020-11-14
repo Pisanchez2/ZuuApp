@@ -14,7 +14,7 @@
     android:layout_marginTop="6dp"
     android:layout_marginBottom="6dp"
     android:gravity="center"
-    android:layout_weight="1"
+    android:layout_weight="0.5"
     app:srcCompat="@drawable/ic_image" />
 
     <TextView
@@ -29,23 +29,23 @@
     android:textSize="15sp" />
 
     <TextView
-    android:layout_width="50dp"
+    android:layout_width="25dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="6dp"
     android:layout_marginBottom="6dp"
     android:gravity="center"
-    android:layout_weight="1"
-    android:text="Presentación"
+    android:layout_weight="0.5"
+    android:text="Pres."
     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
     android:textSize="15sp" />
 
     <TextView
-    android:layout_width="30dp"
+    android:layout_width="25dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="6dp"
     android:layout_marginBottom="6dp"
     android:gravity="center"
-    android:layout_weight="1"
+    android:layout_weight="0.2"
     android:text="Stock"
     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
     android:textSize="15sp" />

@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.ecualac.zuuapp.PubVariable;
 import com.ecualac.zuuapp.R;
 
 import org.mozilla.geckoview.GeckoRuntime;
@@ -50,7 +51,7 @@ public class NotificationsFragment_Sup extends Fragment {
             GeckoRuntime runtime = GeckoRuntime.getDefault(requireContext());
             session.open(runtime);
             view.setSession(session);
-            session.loadUri("http://192.168.100.53/grafana/d/XaM_6Z2Gk/stock?orgId=1&refresh=5s&from=now%2Fd&to=now");
+            session.loadUri(PubVariable.postUrl+"/grafana/d/oe243MoGz/yogurt?orgId=2&refresh=5s&from=now%2Fd&to=now");
         }catch (Exception e){
             Log.e(TAG, "onCreateView: ",e );
         }

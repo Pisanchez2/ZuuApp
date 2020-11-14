@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.ecualac.zuuapp.ui.tanqueros.notifications.NotificationsFragment_Tanque"
+        android:name="com.ecualac.zuuapp.ui.tanqueros.User.UserFragment_Tanque"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications_tanqueros" />
+        tools:layout="@layout/fragment_user_tanqueros" />
 </navigation>

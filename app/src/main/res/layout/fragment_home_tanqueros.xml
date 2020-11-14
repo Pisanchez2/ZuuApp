@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_tanqueros"
+    android:background="@drawable/milk_trans"
     tools:context=".ui.tanqueros.home.Home_Tanqueros_Fragment">
 
     <LinearLayout
@@ -41,18 +42,14 @@
                 android:contentDescription="TODO"
                 android:src="@mipmap/ic_qr_foreground" />
 
+            <TextView
+                android:id="@+id/CodeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center" />
+
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/CodeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/textView20"
@@ -69,7 +66,7 @@
             android:id="@+id/product_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="290dp" />
+            android:layout_marginBottom="55dp" />
 
     </LinearLayout>
 

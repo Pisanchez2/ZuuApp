@@ -11,10 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        android:background="@color/colorTranspa"
+        app:itemIconTint="@color/iconselector"
+        app:itemTextColor="@color/iconselector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:elevation="0.01dp"
         app:menu="@menu/bottom_nav_menu_sup" />
 
     <fragment

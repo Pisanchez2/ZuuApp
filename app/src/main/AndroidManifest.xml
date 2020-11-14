@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,7 +18,7 @@
         <activity
             android:name=".TanqActivity"
             android:label="@string/title_activity_tanque"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/Theme.Milk" >
         </activity>
         <activity
             android:name=".RegistroActivity"
@@ -26,7 +27,7 @@
         <activity
             android:name=".SupActivity"
             android:label="@string/title_activity_sup"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/Theme.Milk" />
         <activity android:name=".AuthActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +35,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
     </application>
 
 </manifest>

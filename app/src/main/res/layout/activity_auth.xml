@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/milk_back_2"
     android:layout_height="match_parent"
     tools:context=".AuthActivity">
 
@@ -63,25 +64,6 @@
                 android:layout_height="wrap_content"
                 android:text="Ingresar" />
 
-            <Button
-                android:id="@+id/gotoBodega"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Bodega" />
-
-            <Button
-                android:id="@+id/gotoSup"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Supervisores" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#D7E2B8"
-                android:onClick="submit"
-                android:text="Login"
-                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/Reg_btn"
@@ -91,6 +73,7 @@
                 android:clickable="true"
                 android:ems="10"
                 android:focusable="auto"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center|center_horizontal"
                 android:inputType="none"
                 android:onClick="onClick"
@@ -101,6 +84,8 @@
 
             <TextView
                 android:id="@+id/responseText"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

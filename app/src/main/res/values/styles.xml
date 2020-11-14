@@ -2,11 +2,27 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Bridge">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
+        <item name="android:itemBackground">@color/colorTranspa</item>
+    </style>
+
+    <style name="Theme.Milk" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- milk attributes -->
+        <!-- Customize your theme here. -->
+        <item name="statusBarBackground">@color/colorstatusbar</item>
+        <item name="colorPrimaryDark">@color/colorstatusbar</item>
+        <item name="statusBarForeground">@color/colorstatusbar</item>
+        <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
+        <item name="android:itemBackground">@color/colorTranspa</item>
+
 
     </style>
 
@@ -27,6 +43,7 @@
         <item name="windowNoTitle">true</item>
         <!-- your dark theme attributes -->
         <!-- Customize your theme here. -->
+        <item name="colorPrimaryDark">@color/colorstatusbarauth</item>
         <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
 
     </style>
@@ -63,4 +80,5 @@
     <color name="primaryColor">#131111</color>
     <color name="primaryDarkColor">#2C2626</color>
     <color name="secondaryColor">#4E4B4B</color>
+    <color name="colorIcon">#2196F3</color>
 </resources>

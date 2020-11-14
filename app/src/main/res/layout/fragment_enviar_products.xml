@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/fragment_1"
         android:layout_width="match_parent"
-        android:background="@color/cardview_dark_background"
+        android:background="@drawable/milk_trans"
         android:layout_height="match_parent">
 
     <LinearLayout
@@ -23,6 +23,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/anadir_btn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="sumar" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
 
         <Space
             android:layout_width="match_parent"
@@ -62,16 +73,6 @@
             android:layout_width="match_parent"
             android:layout_height="25dp" />
 
-        <TextView
-            android:id="@+id/stock_prod_enviar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="25dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,7 +89,7 @@
 
             <EditText
                 android:id="@+id/ProdNumber"
-                android:layout_width="80sp"
+                android:layout_width="160sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -112,11 +113,21 @@
             android:layout_width="match_parent"
             android:layout_height="25dp" />
 
-        <Button
-            android:id="@+id/anadir_btn"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="sumar" />
+            android:layout_gravity="center"
+            android:background="@color/colorspiback"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center" />
+
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"

@@ -3,17 +3,27 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_registration"
-        android:title="@string/title_home" />
+        android:icon="@drawable/ic_milk"
+        android:title="Leche" />
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:icon="@drawable/ic_cheese"
+        android:title="Queso" />
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:icon="@drawable/ic_yogurt"
+        android:title="Yogurt" />
+
+    <item
+        android:id="@+id/navigation_cream"
+        android:icon="@drawable/ic_creammilk"
+        android:title="Crema" />
+
+    <item
+        android:id="@+id/navigation_user_sup"
+        android:icon="@drawable/ic_user"
+        android:title="Mi Cuenta" />
 
 </menu>
