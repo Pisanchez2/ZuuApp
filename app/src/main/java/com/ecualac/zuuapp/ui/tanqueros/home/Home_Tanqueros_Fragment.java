@@ -104,10 +104,13 @@ public class Home_Tanqueros_Fragment extends Fragment {
 
         listview.setOnItemClickListener((parent, view, position, id) -> {
             //Toast.makeText(getActivity(), "Se ha seleccionado el medidor: "+ productos.get(position-1).Presentacion, Toast.LENGTH_LONG).show();
-            gotoEnviarProducts(productos.get(position-1).Nombre,productos.get(position-1).Presentacion,
-                     String.valueOf(productos.get(position-1).c_disponible)
-            ,productos.get(position-1).public_id);
+            if(position==0){
 
+            }else {
+                gotoEnviarProducts(productos.get(position - 1).Nombre, productos.get(position - 1).Presentacion,
+                        String.valueOf(productos.get(position - 1).c_disponible)
+                        , productos.get(position - 1).public_id);
+            }
         });
 
         QRbuscarBtn.setOnClickListener(view -> {
